@@ -8,7 +8,7 @@ npm install
 
 3. Setup Environment Variables
 Create a .env file and add your MongoDB connection string:
-MONGO_URI=mongodb://localhost:27017/salesDB
+MONGO_URI=mongodb://localhost:27017/ecommerce
 PORT=4000
 
 4. Start the Server
@@ -18,7 +18,7 @@ The API will run at http://localhost:4000/graphql.
 GraphQL Queries
 1. Get Customer Spending
 query {
-  getCustomerSpending(customerId: "63f8b3d5a7b1d7f3b0a2c5e1") {
+  getCustomerSpending(customerId: "7895595e-7f25-47fe-a6f8-94b31bfab736") {
     totalSpent
     averageOrderValue
     lastOrderDate
