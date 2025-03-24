@@ -12,7 +12,7 @@ MONGO_URI=mongodb://localhost:27017/salesDB
 PORT=4000
 
 4. Start the Server
-npm start
+node app.js
 
 The API will run at http://localhost:4000/graphql.
 GraphQL Queries
