@@ -7,7 +7,6 @@ const GraphQLJSON = require("graphql-type-json");
 
 const resolvers = {
   Query: {
-    // Query 1: Get Customer Spending
     getCustomerSpending: async (_, { customerId }) => {
         const ordersnew = await Order.find({});
       const orders = await Order.aggregate([
@@ -54,12 +53,17 @@ const resolvers = {
       ]);
       return productsSold;
     },
-
-    // Query 3: Get Sales Analytics
+    
     getSalesAnalytics: async (_, { startDate, endDate }) => {
       const sales = await Order.aggregate([
         {
           $match: {
+            $expr: {
+              $and: [
+                { $gte: [{ $toDate: "$orderDate" }, { $toDate: startDate }] },
+                { $lte: [{ $toDate: "$orderDate" }, { $toDate: endDate }] }
+              ]
+            },
             status: "completed"
           }
         },
